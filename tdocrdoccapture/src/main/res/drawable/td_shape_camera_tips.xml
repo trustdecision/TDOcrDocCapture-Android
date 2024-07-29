@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- 填充颜色 -->
+    <solid android:color="@color/tips_1C1C1C"/>
+<!--    <stroke android:width="1dp" android:color="@color/tips_1C1C1C"/>-->
+    <!-- 矩形的圆角半径 -->
+    <corners android:radius="30dp" />
+</shape>

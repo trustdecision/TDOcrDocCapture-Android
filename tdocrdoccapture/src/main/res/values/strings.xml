@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">TDOcrDocCapture</string>
+
+    <string name="td_touch_to_focus">Touch screen to focus</string>
+    <color name="td_preview_mock">#9a000000</color>
+    <string name="td_crop_fail">Crop failed</string>
+    <string name="td_no_flash">This device does not support flash</string>
+    <string name="td_face_tips">Face tips</string>
+    <string name="td_no_face_tips">No Face tips</string>
+    <string name="td_image_info">Image Info\n</string>
+</resources>

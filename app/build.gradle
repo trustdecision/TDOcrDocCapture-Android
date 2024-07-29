@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    namespace 'com.trustdecision.tdocrdoccapture'
+    namespace 'com.trustdecision.tdocrdoccapturedemo'
 
     compileSdk 34
 
@@ -38,7 +38,7 @@ android {
 }
 
 dependencies {
-
+    implementation project(':tdocrdoccapture')
     implementation libs.appcompat
     implementation libs.material
     implementation libs.constraintlayout

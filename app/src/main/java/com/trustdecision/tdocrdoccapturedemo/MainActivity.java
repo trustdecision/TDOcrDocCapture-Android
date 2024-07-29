@@ -1,4 +1,4 @@
-package com.trustdecision.tdocrdoccapture;
+package com.trustdecision.tdocrdoccapturedemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,24 +14,21 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.trustdecision.tdocrdoccapture.camera.TDIDCardCamera;
-import com.trustdecision.tdocrdoccapture.databinding.ActivityMainBinding;
 
 import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ActivityMainBinding binding;
     private ImageView mIvIDCardResult;
     private TextView mTVinfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        mIvIDCardResult = binding.ivFront;
-        mTVinfo = binding.tvInfo;
+        setContentView(R.layout.activity_main);
+        mIvIDCardResult =  findViewById(R.id.iv_front);
+        mTVinfo =  findViewById(R.id.tv_info);
 
-        LinearLayout noFaceTips = binding.noFaceTips;
+        LinearLayout noFaceTips = findViewById(R.id.no_face_tips);
         /*
          * TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS
          */
@@ -46,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         /*
          * TDIDCardCamera.TYPE_IDCARD_FACE_TIPS
          */
-        LinearLayout faceTips = binding.faceTips;
+        LinearLayout faceTips = findViewById(R.id.face_tips);
         faceTips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
