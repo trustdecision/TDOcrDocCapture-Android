@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <!--相机预览-->
+    <com.trustdecision.tdocrdoccapture.camera.TDCameraPreview
+        android:id="@+id/td_camera_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/tv_tips"
+        android:layout_width="match_parent"
+        android:layout_height="33dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginRight="127dp"
+        android:alpha="0.7"
+        android:background="@drawable/td_shape_camera_tips"
+        android:gravity="center"
+        android:text="Please shoot in landscape mode, placing your document within the frame."
+        android:textColor="@color/white"
+        android:textSize="16sp"/>
+
+    <!--手动裁剪区域-->
+    <com.trustdecision.tdocrdoccapture.cropper.CropImageView
+        android:id="@+id/td_crop_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+    <!--相机裁剪区域-->
+    <ImageView
+        android:id="@+id/td_iv_camera_crop"
+        android:layout_width="420dp"
+        android:layout_height="280dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="55dp"
+        android:src="@mipmap/td_05_2x"
+        android:scaleType="fitXY" />
+
+    <FrameLayout
+        android:id="@+id/td_ll_camera_button"
+        android:layout_width="106dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:background="#FF000000">
+
+        <ImageView
+            android:id="@+id/td_iv_camera_flash"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="50dp"
+            android:background="@mipmap/td_close_falshlight" />
+
+        <ImageView
+            android:id="@+id/td_iv_camera_take"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:background="@mipmap/td_take_picture" />
+
+        <ImageView
+            android:id="@+id/td_iv_camera_close"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="50dp"
+            android:background="@mipmap/td_back" />
+    </FrameLayout>
+
+    <!--拍照后操作布局-->
+    <LinearLayout
+        android:id="@+id/td_ll_camera_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:gravity="right|center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_camera_result_cancel"
+            android:layout_width="128dp"
+            android:layout_height="44dp"
+            android:background="@drawable/td_ocr_bg_grey_normal"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:text="Retry" />
+
+        <TextView
+            android:id="@+id/td_tv_camera_result_ok"
+            android:layout_width="128dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/td_ocr_bg_green_normal"
+            android:gravity="center"
+            android:textColor="@color/white"
+            android:text="Continue" />
+    </LinearLayout>
+
+</FrameLayout>
