@@ -203,7 +203,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
     }
 
     /**
-     * 裁剪图片
+     * Crop the image
      */
     private void cropImage(Bitmap bitmap) {
         /*Calculate the coordinate points of the scan box*/
@@ -239,7 +239,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
 
         mCropBitmap = Bitmap.createBitmap(bitmap, cropX, cropY, cropWidth, cropHeight);
 
-        /*Set to manual cropping mode*/
+        /* Set to manual cropping mode */
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -249,7 +249,11 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
                 mCropImageView.setY(mIvCameraCrop.getY());
                 mCropImageView.setLayoutParams(layoutParams);
                 setCropLayout();
-                mCropImageView.setImageBitmap(mCropBitmap);
+                /**
+                 *
+                 * @param showClipPoint true: Show Clipping Points, false: Do not show crop points
+                 * **/
+                mCropImageView.setImageBitmap(mCropBitmap, true);
             }
         });
     }
@@ -274,6 +278,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
         mLlCameraButton.setVisibility(View.VISIBLE);
         mCropImageView.setVisibility(View.GONE);
         mLlCameraResult.setVisibility(View.GONE);
+
         mCameraPreview.focus();
     }
 
@@ -281,7 +286,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
      * Click OK to return to the image path
      */
     private void confirm() {
-        /*手动裁剪图片*/
+        /* Manually crop an image */
         mCropImageView.crop(new CropListener() {
             @Override
             public void onFinish(Bitmap bitmap) {

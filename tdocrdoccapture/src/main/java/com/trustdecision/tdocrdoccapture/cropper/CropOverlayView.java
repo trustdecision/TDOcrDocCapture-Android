@@ -36,6 +36,7 @@ public class CropOverlayView extends View {
 
     private int currentWidth = 0;
     private int currentHeight = 0;
+    private boolean showClipPoint;
 
     private int minX, maxX, minY, maxY;
 
@@ -47,8 +48,9 @@ public class CropOverlayView extends View {
         super(context, attrs);
     }
 
-    public void setBitmap(Bitmap bitmap) {
+    public void setBitmap(Bitmap bitmap, boolean showClipPoint) {
         this.bitmap = bitmap;
+        this.showClipPoint = showClipPoint;
         resetPoints();
         invalidate();
     }
@@ -63,10 +65,12 @@ public class CropOverlayView extends View {
             resetPoints();
         }
 
-        drawBackground(canvas);
-        drawVertex(canvas);
-        drawEdge(canvas);
-//        drawGrid(canvas);//裁剪框内部线条
+        if (showClipPoint){
+            drawBackground(canvas);
+            drawVertex(canvas);
+            drawEdge(canvas);
+//        drawGrid(canvas);//Crop frame inner lines
+        }
     }
 
     private void resetPoints() {
@@ -215,22 +219,24 @@ public class CropOverlayView extends View {
     }
 
     private void onActionDown(MotionEvent event) {
-        touchDownX = event.getX();
-        touchDownY = event.getY();
-        Point touchPoint = new Point((int) event.getX(), (int) event.getY());
-        int minDistance = distance(touchPoint, topLeft);
-        cropPosition = CropPosition.TOP_LEFT;
-        if (minDistance > distance(touchPoint, topRight)) {
-            minDistance = distance(touchPoint, topRight);
-            cropPosition = CropPosition.TOP_RIGHT;
-        }
-        if (minDistance > distance(touchPoint, bottomLeft)) {
-            minDistance = distance(touchPoint, bottomLeft);
-            cropPosition = CropPosition.BOTTOM_LEFT;
-        }
-        if (minDistance > distance(touchPoint, bottomRight)) {
-            minDistance = distance(touchPoint, bottomRight);
-            cropPosition = CropPosition.BOTTOM_RIGHT;
+        if (showClipPoint) {
+            touchDownX = event.getX();
+            touchDownY = event.getY();
+            Point touchPoint = new Point((int) event.getX(), (int) event.getY());
+            int minDistance = distance(touchPoint, topLeft);
+            cropPosition = CropPosition.TOP_LEFT;
+            if (minDistance > distance(touchPoint, topRight)) {
+                minDistance = distance(touchPoint, topRight);
+                cropPosition = CropPosition.TOP_RIGHT;
+            }
+            if (minDistance > distance(touchPoint, bottomLeft)) {
+                minDistance = distance(touchPoint, bottomLeft);
+                cropPosition = CropPosition.BOTTOM_LEFT;
+            }
+            if (minDistance > distance(touchPoint, bottomRight)) {
+                minDistance = distance(touchPoint, bottomRight);
+                cropPosition = CropPosition.BOTTOM_RIGHT;
+            }
         }
     }
 
@@ -239,29 +245,31 @@ public class CropOverlayView extends View {
     }
 
     private void onActionMove(MotionEvent event) {
-        int deltaX = (int) (event.getX() - touchDownX);
-        int deltaY = (int) (event.getY() - touchDownY);
+        if (showClipPoint) {
+            int deltaX = (int) (event.getX() - touchDownX);
+            int deltaY = (int) (event.getY() - touchDownY);
 
-        switch (cropPosition) {
-            case TOP_LEFT:
-                adjustTopLeft(deltaX, deltaY);
-                invalidate();
-                break;
-            case TOP_RIGHT:
-                adjustTopRight(deltaX, deltaY);
-                invalidate();
-                break;
-            case BOTTOM_LEFT:
-                adjustBottomLeft(deltaX, deltaY);
-                invalidate();
-                break;
-            case BOTTOM_RIGHT:
-                adjustBottomRight(deltaX, deltaY);
-                invalidate();
-                break;
+            switch (cropPosition) {
+                case TOP_LEFT:
+                    adjustTopLeft(deltaX, deltaY);
+                    invalidate();
+                    break;
+                case TOP_RIGHT:
+                    adjustTopRight(deltaX, deltaY);
+                    invalidate();
+                    break;
+                case BOTTOM_LEFT:
+                    adjustBottomLeft(deltaX, deltaY);
+                    invalidate();
+                    break;
+                case BOTTOM_RIGHT:
+                    adjustBottomRight(deltaX, deltaY);
+                    invalidate();
+                    break;
+            }
+            touchDownX = event.getX();
+            touchDownY = event.getY();
         }
-        touchDownX = event.getX();
-        touchDownY = event.getY();
     }
 
     private void adjustTopLeft(int deltaX, int deltaY) {

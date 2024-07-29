@@ -37,9 +37,9 @@ public class CropImageView extends FrameLayout {
         super.onDraw(canvas);
     }
 
-    public void setImageBitmap(Bitmap bitmap) {
+    public void setImageBitmap(Bitmap bitmap,boolean showClipPoint) {
         mImageView.setImageBitmap(bitmap);
-        mCropOverlayView.setBitmap(bitmap);
+        mCropOverlayView.setBitmap(bitmap, showClipPoint);
     }
 
     public void crop(CropListener listener, boolean needStretch) {
