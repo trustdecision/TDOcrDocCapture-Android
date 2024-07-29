@@ -78,14 +78,14 @@ TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_F
 
 ```
 private void cropImage(Bitmap bitmap) {
-	...
-	// 放大比例
-  float expansion = 0.05f; // 5%
-  leftProportion = Math.max(0, leftProportion - expansion);
-  rightProportion = Math.min(1, rightProportion + expansion );
-  topProportion = Math.max(0, topProportion - expansion / 3);      
-  bottomProportion = Math.min(1, bottomProportion + expansion / 3);
-  ...
+    ...
+    // 放大比例
+    float expansion = 0.05f; // 5%
+    leftProportion = Math.max(0, leftProportion - expansion);
+    rightProportion = Math.min(1, rightProportion + expansion );
+    topProportion = Math.max(0, topProportion - expansion / 3);      
+    bottomProportion = Math.min(1, bottomProportion + expansion / 3);
+    ...
 }
 ```
 
@@ -98,34 +98,33 @@ private void cropImage(Bitmap bitmap) {
 
 ```
 private void confirm(Bitmap bitmap) {
-	...
-	 mCropImageView.crop(new CropListener() {
-      @Override
-      public void onFinish(Bitmap bitmap) {
-        ...
-        //压缩图片, 默认最大500px高度, 不超过300kb
-        bitmap =  ImageUtils.compressBitmapByHeight(bitmap, 500 ,300);
-        ...
-      }
+    ...
+    mCropImageView.crop(new CropListener() {
+        @Override
+        public void onFinish(Bitmap bitmap) {
+            ...
+            //压缩图片, 默认最大500px高度, 不超过300kb
+            bitmap =  ImageUtils.compressBitmapByHeight(bitmap, 500 ,300);
+            ...
+        }
     }, true);// true: 拉伸拓展图片, false 不拉伸拓展图片
-  ...
+...
 }
 ```
 
 ## 3.不显示手动裁剪点
 
 文件路径: com/trustdecision/tdocrdoccapture/camera/TDCameraActivity.java
-setImageBitmap(mCropBitmap, true)
 
 ```
 private void cropImage(Bitmap bitmap) {
-	...
+    ...
     /**
      *
      * @param showClipPoint true: 默认显示裁剪点, false: 不显示裁剪点
      **/
     mCropImageView.setImageBitmap(mCropBitmap, true);
-  ...
+    ...
 }
 ```
 
