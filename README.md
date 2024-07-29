@@ -100,15 +100,14 @@ private void cropImage(Bitmap bitmap) {
 private void confirm(Bitmap bitmap) {
 	...
 	 mCropImageView.crop(new CropListener() {
-            @Override
-            public void onFinish(Bitmap bitmap) {
-                ...
-                //压缩图片, 默认最大500px高度, 不超过300kb
-                bitmap =  ImageUtils.compressBitmapByHeight(bitmap, 500 ,300);
-                // bitmap =  ImageUtils.compressBitmapByWidth(bitmap, 400 ,300);
-								...
-            }
-        }, true);
+      @Override
+      public void onFinish(Bitmap bitmap) {
+        ...
+        //压缩图片, 默认最大500px高度, 不超过300kb
+        bitmap =  ImageUtils.compressBitmapByHeight(bitmap, 500 ,300);
+        ...
+      }
+    }, true);// true: 拉伸拓展图片, false 不拉伸拓展图片
   ...
 }
 ```
@@ -116,20 +115,15 @@ private void confirm(Bitmap bitmap) {
 ## 3.不显示手动裁剪点
 
 文件路径: com/trustdecision/tdocrdoccapture/camera/TDCameraActivity.java
+setImageBitmap(mCropBitmap, true)
 
 ```
 private void cropImage(Bitmap bitmap) {
 	...
-   //Set the manual crop area to be the same size as the scan box
-    FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(mIvCameraCrop.getWidth(), mIvCameraCrop.getHeight());
-    mCropImageView.setX(mIvCameraCrop.getX());
-    mCropImageView.setY(mIvCameraCrop.getY());
-    mCropImageView.setLayoutParams(layoutParams);
-    setCropLayout();
     /**
      *
      * @param showClipPoint true: 默认显示裁剪点, false: 不显示裁剪点
-     * **/
+     **/
     mCropImageView.setImageBitmap(mCropBitmap, true);
   ...
 }
