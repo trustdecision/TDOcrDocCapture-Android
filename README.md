@@ -112,7 +112,7 @@ private void confirm(Bitmap bitmap) {
 }
 ```
 
-## 3.不显示手动裁剪点
+## 3.是否显示手动裁剪点
 
 文件路径: com/trustdecision/tdocrdoccapture/camera/TDCameraActivity.java
 
