@@ -42,6 +42,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
     private Bitmap        mCropBitmap;
     private CropImageView mCropImageView;
     private View          mLlCameraResult;
+    private View          mTips;
     private View          mLlCameraButton;
 
     @Override
@@ -124,6 +125,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void initView() {
+        mTips = findViewById(R.id.tv_tips);
         mCameraPreview = findViewById(R.id.td_camera_preview);
         mIvCameraFlash = findViewById(R.id.td_iv_camera_flash);
         mIvCameraCrop = findViewById(R.id.td_iv_camera_crop);
@@ -270,6 +272,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
      * Set the crop layout
      */
     private void setCropLayout() {
+        mTips.setVisibility(View.GONE);
         mIvCameraCrop.setVisibility(View.GONE);
         mCameraPreview.setVisibility(View.GONE);
         mLlCameraButton.setVisibility(View.GONE);
@@ -281,6 +284,7 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
      * Set up photo layout
      */
     private void setTakePhotoLayout() {
+        mTips.setVisibility(View.VISIBLE);
         mIvCameraCrop.setVisibility(View.VISIBLE);
         mCameraPreview.setVisibility(View.VISIBLE);
         mLlCameraButton.setVisibility(View.VISIBLE);
