@@ -43,24 +43,24 @@ TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_F
 2.3. 获取结果
 
 ```java
-		@Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == TDIDCardCamera.RESULT_CODE) {
-            //Get the image path and display the image
-            final String path = TDIDCardCamera.getImagePath(data);
-            if (!TextUtils.isEmpty(path)) {
-                Bitmap bitmap = BitmapFactory.decodeFile(path);
-                mIvIDCardResult.setImageBitmap(bitmap);
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+    if (resultCode == TDIDCardCamera.RESULT_CODE) {
+        //Get the image path and display the image
+        final String path = TDIDCardCamera.getImagePath(data);
+        if (!TextUtils.isEmpty(path)) {
+            Bitmap bitmap = BitmapFactory.decodeFile(path);
+            mIvIDCardResult.setImageBitmap(bitmap);
 
-                // 上传图片的base64
-	              // String imageBase64 = ImageUtils.getBase64FromImagePath(path);
+            // 上传图片的base64
+               String imageBase64 = ImageUtils.getBase64FromImagePath(path);
 
-                // 在实际开发中，成功将镜像上传到服务器后，需要删除所有缓存的镜像。只需调用以下方法:
-                // FileUtils.clearCache(this);
-            }
+            // 在实际开发中，成功将镜像上传到服务器后，需要删除所有缓存的镜像。只需调用以下方法:
+            // FileUtils.clearCache(this);
         }
     }
+}
 ```
 
 
