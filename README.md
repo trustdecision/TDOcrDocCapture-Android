@@ -3,7 +3,7 @@
 TDOcrDocCapture 是为客户提供一个证件拍摄的UI库，以源码形式提供，同时支持iOS 和 Android，本仓库为Android 仓库
 
 ## APK
-[点击下载Demo APK](https://github.com/trustdecision/TDOcrDocCapture-Android/tree/main/docs/images/TdOcrDocCapture-release-1.0.apk)
+[点击下载Demo APK](https://github.com/trustdecision/TDOcrDocCapture-Android/tree/main/docs/apk/TdOcrDocCapture-release-1.0.apk)
 
 ### 竖屏
 
