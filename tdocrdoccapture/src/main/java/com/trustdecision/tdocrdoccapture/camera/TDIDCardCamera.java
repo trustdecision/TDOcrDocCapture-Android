@@ -15,7 +15,7 @@ public class TDIDCardCamera {
     public final static int     PERMISSION_CODE_FIRST = 0x12;
 
     public final static int     SCREEN_AUTOMATIC_ROTATION = 0;  //automatic rotation
-    public final static int SCREEN_FORCE_PORTRAIT = 1;      //force vertical
+    public final static int     SCREEN_FORCE_PORTRAIT = 1;      //force vertical
     public final static int     SCREEN_FORCE_LANDSCAPE = 2;    //force landscape
 
     public final static String  SCREEN_ORIENTATION =  "screen_orientation";

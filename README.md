@@ -33,11 +33,10 @@ dependencies {
 
 ```
 //带人脸头像的证件拍摄
-TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS);
+TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS, TDIDCardCamera.SCREEN_FORCE_LANDSCAPE);
 
 //不带人脸头像的证件拍摄
-TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_FACE_TIPS);
-
+TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_FACE_TIPS, TDIDCardCamera.SCREEN_AUTOMATIC_ROTATION);
 ```
 
 2.3. 获取结果
@@ -68,7 +67,6 @@ protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 # 配置项
 
 ## 1.实际裁剪相对裁剪框尺寸的放大比例
-
 文件路径: com/trustdecision/tdocrdoccapture/camera/TDCameraActivity.java
 
 ```

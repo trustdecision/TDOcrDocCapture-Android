@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                     mCameraDirection = TDIDCardCamera.SCREEN_FORCE_PORTRAIT;
                 } else {
                     mCameraDirection = TDIDCardCamera.SCREEN_AUTOMATIC_ROTATION;
-
                 }
             }
         });
@@ -92,11 +91,11 @@ public class MainActivity extends AppCompatActivity {
 //                mTVinfo.append(Html.fromHtml("<font color='#12B455'><big><b>Image Path: </b></big></font>"));
 //                mTVinfo.append(path);
 
-                // upload image...
+                /* upload image... */
 //                String imageBase64 = ImageUtils.getBase64FromImagePath(path);
 
 
-                // In actual development, after successfully uploading the image to the server, you need to delete all cached images. Just call the following method:
+                /* In actual development, after successfully uploading the image to the server, you need to delete all cached images. Just call the following method: */
 //                FileUtils.clearCache(this);
             }
         }
