@@ -73,9 +73,9 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.td_layout_camera);
         mType = getIntent().getIntExtra(TDIDCardCamera.TAKE_TYPE, 0);
         mScreenOrientation = getIntent().getIntExtra(TDIDCardCamera.SCREEN_ORIENTATION, TDIDCardCamera.SCREEN_AUTOMATIC_ROTATION);
-        if (mScreenOrientation == TDIDCardCamera.SCREEN_FORCE_VERTICAL){
+        if (mScreenOrientation == TDIDCardCamera.SCREEN_FORCE_PORTRAIT){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        } else if (mScreenOrientation == TDIDCardCamera.SCREEN_FORCE_HORIZONTAL){
+        } else if (mScreenOrientation == TDIDCardCamera.SCREEN_FORCE_LANDSCAPE){
             setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         }
 

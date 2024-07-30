@@ -14,11 +14,6 @@ TDOcrDocCapture 是为客户提供一个证件拍摄的UI库，以源码形式�
 | -------- | -------- |
 |  <img src="./docs/images/td_demo_landscape.jpg" style="zoom:33%;" />  |   <img src="./docs/images/td_demo_result_landscape.jpg" style="zoom:33%;" />|
 
-### 结果页
-
-<img src="./docs/images/td_demo_main.jpg" style="zoom:33%;" />
-
-
 # 集成
 
 1.将 TDOcrDocCapture-Android/TDOcrDocCapture 文件夹下 tdocrdoccapture 导入您的Android Studio 工程；

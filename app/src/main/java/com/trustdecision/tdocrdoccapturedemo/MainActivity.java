@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.trustdecision.tdocrdoccapture.camera.TDIDCardCamera;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     private ImageView mIvIDCardResult;
     private TextView mTVinfo;
+    private int mCameraDirection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,27 +31,36 @@ public class MainActivity extends AppCompatActivity {
         mIvIDCardResult =  findViewById(R.id.iv_front);
         mTVinfo =  findViewById(R.id.tv_info);
 
-        /*
-         * TDIDCardCamera.TYPE_IDCARD_FACE_TIPS
-         */
+        RadioGroup mRGCameraDirection = findViewById(R.id.rg_camera_direction);
+        mRGCameraDirection.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                if (checkedId == R.id.rb_landscape){
+                    mCameraDirection = TDIDCardCamera.SCREEN_FORCE_LANDSCAPE;
+                } else if (checkedId == R.id.rb_portrait){
+                    mCameraDirection = TDIDCardCamera.SCREEN_FORCE_PORTRAIT;
+                } else {
+                    mCameraDirection = TDIDCardCamera.SCREEN_AUTOMATIC_ROTATION;
+
+                }
+            }
+        });
+
         LinearLayout faceTips = findViewById(R.id.face_tips);
         faceTips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TDIDCardCamera.create(MainActivity.this)
-                        .openCamera(TDIDCardCamera.TYPE_IDCARD_FACE_TIPS);
+                        .openCamera(TDIDCardCamera.TYPE_IDCARD_FACE_TIPS, mCameraDirection);
             }
         });
 
         LinearLayout noFaceTips = findViewById(R.id.no_face_tips);
-        /*
-         * TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS
-         */
         noFaceTips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TDIDCardCamera.create(MainActivity.this)
-                        .openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS, TDIDCardCamera.SCREEN_FORCE_HORIZONTAL);
+                        .openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS, mCameraDirection);
             }
         });
 

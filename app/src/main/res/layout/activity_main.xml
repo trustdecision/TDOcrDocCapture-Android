@@ -8,7 +8,6 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -27,8 +26,8 @@
         <TextView
             android:id="@+id/tv_info"
             android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,13 +54,13 @@
                 android:textStyle="bold" />
 
             <RadioGroup
-                android:id="@+id/rb_env"
+                android:id="@+id/rg_camera_direction"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <RadioButton
-                    android:id="@+id/rb_test"
+                    android:id="@+id/rb_auto"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -69,14 +68,14 @@
                     android:text="Auto" />
 
                 <RadioButton
-                    android:id="@+id/rb_sandbox"
+                    android:id="@+id/rb_landscape"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Landscape" />
 
                 <RadioButton
-                    android:id="@+id/rb_stg"
+                    android:id="@+id/rb_portrait"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
