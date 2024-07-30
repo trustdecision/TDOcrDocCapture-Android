@@ -28,18 +28,6 @@ public class MainActivity extends AppCompatActivity {
         mIvIDCardResult =  findViewById(R.id.iv_front);
         mTVinfo =  findViewById(R.id.tv_info);
 
-        LinearLayout noFaceTips = findViewById(R.id.no_face_tips);
-        /*
-         * TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS
-         */
-        noFaceTips.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS);
-            }
-        });
-
-
         /*
          * TDIDCardCamera.TYPE_IDCARD_FACE_TIPS
          */
@@ -47,7 +35,20 @@ public class MainActivity extends AppCompatActivity {
         faceTips.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                TDIDCardCamera.create(MainActivity.this).openCamera(TDIDCardCamera.TYPE_IDCARD_FACE_TIPS);
+                TDIDCardCamera.create(MainActivity.this)
+                        .openCamera(TDIDCardCamera.TYPE_IDCARD_FACE_TIPS);
+            }
+        });
+
+        LinearLayout noFaceTips = findViewById(R.id.no_face_tips);
+        /*
+         * TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS
+         */
+        noFaceTips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                TDIDCardCamera.create(MainActivity.this)
+                        .openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS, TDIDCardCamera.SCREEN_FORCE_HORIZONTAL);
             }
         });
 
@@ -75,9 +76,9 @@ public class MainActivity extends AppCompatActivity {
                     mTVinfo.append(String.format("%.2f KB", fileSize));
                 }
 
-                mTVinfo.append("\n");
-                mTVinfo.append(Html.fromHtml("<font color='#12B455'><big><b>Image Path: </b></big></font>"));
-                mTVinfo.append(path);
+//                mTVinfo.append("\n");
+//                mTVinfo.append(Html.fromHtml("<font color='#12B455'><big><b>Image Path: </b></big></font>"));
+//                mTVinfo.append(path);
 
                 // upload image...
 //                String imageBase64 = ImageUtils.getBase64FromImagePath(path);

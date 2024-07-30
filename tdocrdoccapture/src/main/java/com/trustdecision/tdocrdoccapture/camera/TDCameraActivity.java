@@ -3,6 +3,7 @@ package com.trustdecision.tdocrdoccapture.camera;
 
 import android.Manifest;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -36,12 +37,12 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
     private ImageView       mIvCameraFlash;
     private TDCameraPreview mCameraPreview;
     private ImageView     mIvCameraCrop;
-    private int           mType; //tips类型
+    private int           mType; //tips type
+    private int           mScreenOrientation; // Screen Orientation
     private Bitmap        mCropBitmap;
     private CropImageView mCropImageView;
     private View          mLlCameraResult;
     private View          mLlCameraButton;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +72,13 @@ public class TDCameraActivity extends AppCompatActivity implements View.OnClickL
     private void init() {
         setContentView(R.layout.td_layout_camera);
         mType = getIntent().getIntExtra(TDIDCardCamera.TAKE_TYPE, 0);
+        mScreenOrientation = getIntent().getIntExtra(TDIDCardCamera.SCREEN_ORIENTATION, TDIDCardCamera.SCREEN_AUTOMATIC_ROTATION);
+        if (mScreenOrientation == TDIDCardCamera.SCREEN_FORCE_VERTICAL){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        } else if (mScreenOrientation == TDIDCardCamera.SCREEN_FORCE_HORIZONTAL){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
+
         initView();
         initListener();
         /*Added a 0.1 second transition interface to solve the problem that the preview interface starts slowly when some phones apply for permissions for the first time*/

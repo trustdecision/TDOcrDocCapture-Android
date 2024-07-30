@@ -6,7 +6,7 @@ TDOcrDocCapture 是为客户提供一个证件拍摄的UI库，以源码形式�
 
 | 拍照页面 | 裁剪页面 |
 | -------- | -------- |
-|  <img src="./docs/images/td_demo_portrait.jpg" style="zoom:33%;" />  |   <img src="./docs/images/td_demo_result_portrait.jpg" style="zoom:33%;" />|
+|  <img src="./docs/images/td_demo_portrait.jpg" style="zoom:33%;" /> |   <img src="./docs/images/td_demo_result_portrait.jpg" style="zoom:33%;" />|
 
 ### 横屏
 
