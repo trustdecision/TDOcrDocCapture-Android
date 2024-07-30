@@ -62,8 +62,6 @@ public class MainActivity extends AppCompatActivity {
                         .openCamera(TDIDCardCamera.TYPE_IDCARD_NO_FACE_TIPS, mCameraDirection);
             }
         });
-
-//        faceTips.performClick();
     }
 
     @Override
